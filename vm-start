@@ -1,0 +1,10 @@
+#!/bin/bash
+
+NAME=$1
+P=$$
+LANG=C
+
+echo $NAME | egrep -q '^vm[0-9][0-9]$' || (echo Usage: $(basename $0) vmNN ; kill -9 $P )
+virsh list | grep $NAME && (echo ERROR: $NAME running ; kill -9 $P )
+
+virsh start $NAME > /dev/null
