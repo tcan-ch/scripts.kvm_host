@@ -77,10 +77,10 @@ if [[ vm_nr == 0 ]] ; then
 fi
 
 # gnerate full name
-$vm_name="$vm_template$vm_nr"
+vm_name="$vm_template$vm_nr"
 
 # check if VM is free
-virsh list --all | grep "$vm_name" && (echo ERROR: "$vm_name" exists ; kill -9 $P )
+virsh list --all | grep "$vm_name" > /dev/null 2>&1 && (echo ERROR: "$vm_name" exists ; kill -9 $P )
 
 echo "INFO: Creating $vm_template VM: $vm_name"
 
