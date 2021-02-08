@@ -71,7 +71,7 @@ done
 ########################
 
 # Only if no NR provided
-if [[ vm_nr == 0 ]] ; then
+if [[ $vm_nr == 0 ]] ; then
   # find next free VM name
   for i in {$min_vm_nr..$max_vm_nr} ; do if ! virsh list --all --title | grep "$vm_template$i" > /dev/null ; then echo $i ; break ; fi ; done
 fi
