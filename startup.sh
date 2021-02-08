@@ -1,0 +1,1 @@
+hostnamectl set-hostname cos$(hostname -I | awk -F ' ' '{print $1}' | awk -F '.' '{print $4".suter-lab.dev"}')
