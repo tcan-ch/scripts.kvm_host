@@ -82,7 +82,9 @@ vm_name="$vm_template$vm_nr"
 # check if VM is free
 virsh list --all | grep "$vm_name" > /dev/null 2>&1 && (echo ERROR: "$vm_name" exists ; kill -9 $P )
 
-echo "INFO: Creating $vm_template VM: $vm_name"
+echo "Creating $vm_template VM: $vm_name"
+echo "    Memory: $vm_memory"
+echo "    vCPU:   $vm_vcpu"
 
 # "Failsave"
 set -e
@@ -91,7 +93,7 @@ set -e
 vm_uuid=$(uuidgen)
 
 # Copy Disk
-cp -av $dir_template/template_$vm_template.qcow2 $dir_vm/$vm_name.qcow2
+cp -a $dir_template/template_$vm_template.qcow2 $dir_vm/$vm_name.qcow2
 
 # Prepare Import XML
 sed "s/__NAME__/$vm_name/g" $dir_template/template_$vm_template.xml > $dir_tmp/$vm_name.xml
