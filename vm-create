@@ -48,7 +48,7 @@ case $i in
       vm_template="${i#*=}"
     shift
     ;;
-    --help=*)
+    --help)
       echo "usage bla bla"
 
       exit;
