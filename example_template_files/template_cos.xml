@@ -1,0 +1,27 @@
+<domain type='kvm'>
+  <name>__NAME__</name>
+  <uuid>__UUID__</uuid>
+  (...)
+  <memory unit='KiB'>__MEMORY__</memory>
+  <currentMemory unit='KiB'>__MEMORY__</currentMemory>
+  <vcpu placement='static'>__VCPU__</vcpu>
+  (...)
+  <devices>
+    <emulator>/usr/libexec/qemu-kvm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/srv/vm/datastores/vms/__DISK1__'/>
+      <target dev='vda' bus='virtio'/>
+      <boot order='1'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
+    </disk>
+    (...)
+    <interface type='network'>
+      <mac address='__MAC__'/>
+      <source network='LAN'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
+    (...)
+  </devices>
+</domain>

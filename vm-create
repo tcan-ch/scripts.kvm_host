@@ -49,8 +49,7 @@ case $i in
     shift
     ;;
     --help)
-      echo "usage bla bla"
-
+      echo "Help is on it's way to the nordpole."
       exit;
     shift
     ;;
